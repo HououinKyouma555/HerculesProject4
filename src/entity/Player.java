@@ -195,7 +195,23 @@ public class Player extends Entity {
                     worldY=24*gp.tileSize;
                 }
             }
-        }
+            if (i == 1){
+                gp.mapState = gp.cave;
+                gp.tileM.loadMap("/res/maps/cave.txt");
+                worldX = gp.tileSize*3;
+                worldY = gp.tileSize*24;
+            } if (i >=2 && i<= 4){
+                gp.mapState = gp.Nemea;
+                gp.tileM.loadMap("/res/maps/nemea.txt");
+                worldX = gp.tileSize*46;
+                worldY = gp.tileSize*23;
+            }
+            } if (i >=5 && i<= 7){
+                gp.mapState = gp.cave;
+                gp.tileM.loadMap("/res/maps/cave.txt");
+                worldX = gp.tileSize*3;
+                worldY = gp.tileSize*24;
+            }
     }
 
     public void interactNPC(int i){
