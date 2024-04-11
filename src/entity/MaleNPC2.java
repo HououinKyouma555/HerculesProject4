@@ -7,7 +7,7 @@ public class MaleNPC2 extends Entity{
     public MaleNPC2(GamePanel gp){
         super(gp);
 
-        name = "Brother2";
+        name = "fatty2";
         maxHealth = 100;
         health = maxHealth;
 
@@ -26,7 +26,7 @@ public class MaleNPC2 extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "What's up brother";
+        dialogues[0] = "what's up brother!";
     }
 
     public void speak()
