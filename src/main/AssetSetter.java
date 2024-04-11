@@ -5,6 +5,10 @@ import entity.Chicken;
 import entity.Lion;
 import entity.NPC_OldMan;
 import object.OBJ_Door;
+import entity.FemaleNPC;
+import entity.MaleNPC;
+import entity.FemaleNPC2;
+import entity.MaleNPC2;
 
 public class AssetSetter {
     
@@ -30,6 +34,22 @@ public class AssetSetter {
         gp.npc[1] = new Chicken(gp);
         gp.npc[1].worldX = gp.tileSize*27;
         gp.npc[1].worldY = gp.tileSize*21;
+
+        gp.npc[2] = new FemaleNPC(gp);
+        gp.npc[2].worldX = gp.tileSize*9;
+        gp.npc[2].worldY = gp.tileSize*7;
+
+        gp.npc[3] = new MaleNPC(gp);
+        gp.npc[3].worldX = gp.tileSize*19;
+        gp.npc[3].worldY = gp.tileSize*15;
+
+        gp.npc[4] = new MaleNPC2(gp);
+        gp.npc[4].worldX = gp.tileSize*35;
+        gp.npc[4].worldY = gp.tileSize*6;
+
+        gp.npc[5] = new FemaleNPC2(gp);
+        gp.npc[5].worldX = gp.tileSize*40;
+        gp.npc[5].worldY = gp.tileSize*15;
     }
 
     public void setEnemy(){
