@@ -1,6 +1,6 @@
 public class Bow {
     static Player player;
     //Scales damage with player reputation
-    public int baseBowAttack=60;
-    public int bowAttackValue=baseBowAttack*player.reputation;
+    static public int baseBowAttack=60;
+    static public int bowAttackValue=baseBowAttack*Player.reputation;
 }

@@ -1,5 +1,5 @@
 public class Sword {
     static Player player;
-    public int baseSwordAttack=30;
-    public int swordAttackValue=baseSwordAttack*player.reputation;
+    public static int baseSwordAttack=30;
+    public static int swordAttackValue=baseSwordAttack*Player.reputation;
 }

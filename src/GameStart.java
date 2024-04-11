@@ -15,11 +15,8 @@ public class GameStart {
         player = new Player(name,100,100);
         enemy = new Enemy("Enemy",100,100);
         lion = new Lion("Lion",500,500);
-        /* 
-        When I try to initiate a battle, it says cannot read field "hp", so i'll keep this code commented out for now.
-        System.out.println(enemy.hp);
-        BattleSystem.battle();
-        */
+        //Run this command below in order to fight a random enemy! This calls the battle method in BattleSystem.java
+        //BattleSystem.battle();
         scanner.close();
     }
 }
