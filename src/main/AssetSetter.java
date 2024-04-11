@@ -4,10 +4,8 @@ import entity.BlueBoy;
 import entity.Chicken;
 import entity.Lion;
 import entity.NPC_OldMan;
-import object.Dark_Tile;
-import object.Light_Tile;
+import entity.Shinigami;
 import object.OBJ_Door;
-import object.OBJ_Key;
 import entity.FemaleNPC;
 import entity.MaleNPC;
 import entity.FemaleNPC2;
@@ -102,6 +100,8 @@ public class AssetSetter {
         gp.enemy[2] = new Lion(gp);
         gp.enemy[2].worldX = gp.tileSize*32;
         gp.enemy[2].worldY = gp.tileSize*3;
+
+        gp.enemy[3] = new Shinigami(gp);
     }
 
 }

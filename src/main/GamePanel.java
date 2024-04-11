@@ -57,6 +57,7 @@ public class GamePanel extends JPanel implements Runnable{
     public final int pauseState = 2;
     public final int dialogueState = 3;
     public final int combatState = 4;
+    public final int overState = 5;
 
     // MAP STATE
     public int mapState;
@@ -146,7 +147,6 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
-        
         // TITLE STATE
         if (gameState == titleState){
             ui.draw(g2);

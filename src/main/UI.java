@@ -61,6 +61,10 @@ public class UI {
         if (gp.gameState == gp.combatState){
             drawCombatScreen(gp.player.enemyTag);
         }
+        if (gp.gameState == gp.overState)
+        {
+            drawGameOverScreen();
+        }
     }
 
     public void drawTitleScreen(){
@@ -182,7 +186,7 @@ public class UI {
         
 
         // DRAW COMBAT BOX
-        if (gp.enemy[enemyTag].health > 0){
+        if (gp.enemy[enemyTag].health > 0 && gp.player.health > 0){
             g2.setColor(Color.WHITE);
             g2.fillRect(5, gp.tileSize*8, gp.screenWidth-10, gp.tileSize*4 - 10);
 
@@ -248,7 +252,7 @@ public class UI {
                 }
             }
         }
-        else{
+        else if (gp.enemy[enemyTag].health <= 0){
             gp.stopMusic();
             text = "oh.. :(";
             x = gp.tileSize * 2;
@@ -264,7 +268,38 @@ public class UI {
             // gp.enemy[enemyTag] = null;
             // gp.gameState = gp.playState;
         }
+        else if (gp.player.health <= 0){
+            gp.gameState = gp.overState;
+        }
+        
 
+    }
+
+    public void drawGameOverScreen()
+    {
+        g2.setColor(new Color(70, 120, 80));
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+        // TITLE NAME
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 80F));
+        String text = "GAME OVER";
+        int x = getXForCenteredText(text);
+        int y = gp.screenHeight/2 - gp.tileSize * 3;
+
+        g2.setColor(Color.BLACK);
+        g2.drawString(text, x-5, y+5);
+
+        g2.setColor(new Color(210, 70, 130));
+        g2.drawString(text, x, y);
+
+        x = gp.screenWidth /2 - gp.tileSize * 2;
+        y += gp.tileSize * 2 - gp.tileSize;
+        g2.drawImage(gp.enemy[3].left1, x, y, gp.tileSize * 3, gp.tileSize * 3, null);
+
+        g2.setFont(gp.getFont().deriveFont(Font.PLAIN, 40F));
+        g2.setColor(Color.WHITE);
+
+        y+= gp.tileSize * 4;
     }
 
     public void enemyTalk(){
