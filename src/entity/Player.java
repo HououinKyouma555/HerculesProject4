@@ -98,88 +98,96 @@ public class Player extends Entity {
 
 
     public void update(){
-        if (keyH.downPressed == true || keyH.upPressed == true 
-        || keyH.rightPressed == true || keyH.leftPressed == true){
-            // When WASD is pressed, the direction of the player changes
-            if (keyH.upPressed == true){
-                direction = "up";
-                
-            }
-            else if (keyH.downPressed == true){
-                direction = "down";
-                
-            }
-            else if (keyH.rightPressed == true){
-                direction = "right";
-                
-            }
-            else if (keyH.leftPressed == true){
-                direction = "left";
-                
-            }
-
-            // If running is true, double speed. Else, walk
-            if (keyH.running == true){
-                speed = 10;
-                boostCount++;
-                if (boostCount == 1){
-                    gp.playSE(3);
+        if (health <= 0)
+        {
+            gp.gameState = gp.overState;
+        }
+        else
+        {
+            if (keyH.downPressed == true || keyH.upPressed == true 
+            || keyH.rightPressed == true || keyH.leftPressed == true){
+                // When WASD is pressed, the direction of the player changes
+                if (keyH.upPressed == true){
+                    direction = "up";
+                    
                 }
-            }
-            else if (keyH.running == false){
-                speed = 5;
-                boostCount = 0;
-            }
-
-            //CHECK TILE COLLISION
-            collisionOn = false;
-            gp.cChecker.checkTile(this);
-
-            //CHECK OBJECT COLLISION
-            int objIndex = gp.cChecker.checkObject(this, true);
-            pickUpObject(objIndex);
-
-            //CHECK NPC COLLISION
-            int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
-            interactNPC(npcIndex);
-
-            //CHECK ENEMY COLLISION
-            int enemyIndex = gp.cChecker.checkEntity(this, gp.enemy);
-            battleEnemy(enemyIndex);
-
-            //IF COLLISIONON IS FALSE, PLAYER CAN MOVE
-            if (collisionOn == false){
-                switch (direction){
-                case "up":
-                    worldY -= speed;
-                    break;
-                case "down":
-                    worldY += speed;
-                    break;
-                case "right":
-                    worldX += speed;
-                    break;
-                case "left":
-                    worldX -= speed;
-                    break;
+                else if (keyH.downPressed == true){
+                    direction = "down";
+                    
                 }
-            }
-            
-            // spriteCounter increases every time the frame is updated (60 times per second). When
-            // spriteCounter exceeds 10, the spriteNum of the character changes and spriteCounter is
-            // refreshed. The result is that 6 times per second, the character changes costume to create
-            // the walking animation.
-            spriteCounter++;
-            if (spriteCounter >= 10){
-                if (spriteNum == 1){
-                    spriteNum = 2;
+                else if (keyH.rightPressed == true){
+                    direction = "right";
+                    
                 }
-                else if (spriteNum == 2){
-                    spriteNum = 1;
+                else if (keyH.leftPressed == true){
+                    direction = "left";
+                    
                 }
-                spriteCounter = 0;
+
+                // If running is true, double speed. Else, walk
+                if (keyH.running == true){
+                    speed = 10;
+                    boostCount++;
+                    if (boostCount == 1){
+                        gp.playSE(3);
+                    }
+                }
+                else if (keyH.running == false){
+                    speed = 5;
+                    boostCount = 0;
+                }
+
+                //CHECK TILE COLLISION
+                collisionOn = false;
+                gp.cChecker.checkTile(this);
+
+                //CHECK OBJECT COLLISION
+                int objIndex = gp.cChecker.checkObject(this, true);
+                pickUpObject(objIndex);
+
+                //CHECK NPC COLLISION
+                int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
+                interactNPC(npcIndex);
+
+                //CHECK ENEMY COLLISION
+                int enemyIndex = gp.cChecker.checkEntity(this, gp.enemy);
+                battleEnemy(enemyIndex);
+
+                //IF COLLISIONON IS FALSE, PLAYER CAN MOVE
+                if (collisionOn == false){
+                    switch (direction){
+                    case "up":
+                        worldY -= speed;
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    }
+                }
+                
+                // spriteCounter increases every time the frame is updated (60 times per second). When
+                // spriteCounter exceeds 10, the spriteNum of the character changes and spriteCounter is
+                // refreshed. The result is that 6 times per second, the character changes costume to create
+                // the walking animation.
+                spriteCounter++;
+                if (spriteCounter >= 10){
+                    if (spriteNum == 1){
+                        spriteNum = 2;
+                    }
+                    else if (spriteNum == 2){
+                        spriteNum = 1;
+                    }
+                    spriteCounter = 0;
+                }
             }
         }
+        
         
     }
 
@@ -195,23 +203,7 @@ public class Player extends Entity {
                     worldY=24*gp.tileSize;
                 }
             }
-            if (i == 1){
-                gp.mapState = gp.cave;
-                gp.tileM.loadMap("/res/maps/cave.txt");
-                worldX = gp.tileSize*3;
-                worldY = gp.tileSize*24;
-            } if (i >=2 && i<= 4){
-                gp.mapState = gp.Nemea;
-                gp.tileM.loadMap("/res/maps/nemea.txt");
-                worldX = gp.tileSize*46;
-                worldY = gp.tileSize*23;
-            }
-            } if (i >=5 && i<= 7){
-                gp.mapState = gp.cave;
-                gp.tileM.loadMap("/res/maps/cave.txt");
-                worldX = gp.tileSize*3;
-                worldY = gp.tileSize*24;
-            }
+        }
     }
 
     public void interactNPC(int i){
