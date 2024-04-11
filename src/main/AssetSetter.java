@@ -28,8 +28,9 @@ public class AssetSetter {
         gp.obj[0].worldY = gp.tileSize*6;
 
         gp.obj[1] = new OBJ_Key(gp);
-        gp.obj[1].worldX = gp.tileSize*5;
-        gp.obj[1].worldY = gp.tileSize*5;
+        gp.obj[1].worldX = gp.tileSize*37;
+        gp.obj[1].worldY = gp.tileSize*11;
+        gp.obj[1].appears = gp.cave;
 
         gp.obj[2] = new Light_Tile(gp);
         gp.obj[2].worldX = gp.tileSize*2;

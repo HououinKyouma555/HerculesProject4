@@ -23,6 +23,8 @@ public class Player extends Entity {
 
     int boostCount = 0;
 
+    int hasKey = 0;
+
     // player constructor setting default values
     public Player (GamePanel gp, KeyHandler keyH){
 
@@ -196,10 +198,9 @@ public class Player extends Entity {
                 }
             }
             if (i == 1){
-                gp.mapState = gp.cave;
-                gp.tileM.loadMap("/res/maps/cave.txt");
-                worldX = gp.tileSize*3;
-                worldY = gp.tileSize*24;
+                gp.obj[i] = null;
+                hasKey++;
+                System.out.println("Has Key is now: "+hasKey);
             } if (i >=2 && i<= 4){
                 gp.mapState = gp.Nemea;
                 gp.tileM.loadMap("/res/maps/nemea.txt");
